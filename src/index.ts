@@ -1190,7 +1190,7 @@ function UpdateDeviceState(deviceId: string) {
 			}
 		} else {
 			// bus is unlinked
-			if (deviceSources.findIndex((s) => currentSourceTallyData?.[s.sourceId]?.includes(bus.type)) !== -1) {
+			if (deviceSources.findIndex((s) => s.deviceId == device.id && currentSourceTallyData?.[s.id]?.includes(bus.type)) !== -1) {
 				currentDeviceTallyData[device.id].push(bus.id);
 				if (!previousBusses.includes(bus.id)) {
 					RunAction(deviceId, bus.id, true);
@@ -1326,7 +1326,7 @@ function initializeSource(source: Source): TallyInput {
 		for (const [sourceAddress, busses] of Object.entries(tallyDataWithAddresses)) {
 			let device_source = device_sources.find((s) => s.sourceId == source.id && s.address == sourceAddress);
 			if(device_source) {
-				tallyData[device_source.sourceId] = busses;
+				tallyData[device_source.id] = busses;
 			}
 		}
 		SendCloudSourceTallyData(source.id, tallyData);
