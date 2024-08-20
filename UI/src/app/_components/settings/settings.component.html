@@ -574,15 +574,25 @@
                     </div>
                     <div class="mb-3" *ngSwitchCase="'dropdown'">
                         <label [for]="field.fieldName" class="form-label">{{field.fieldLabel}}<span class="text-danger" *ngIf="!field.optional">*</span></label>
-                        <select class="form-select" [id]="field.fieldName" [(ngModel)]="currentSource.data[field.fieldName]">
+                        <select class="form-select" [id]="field.fieldName" [(ngModel)]="currentSource.data[field.fieldName]" [attr.aria-describedby]="field.fieldName+'HelpBlock'">
                             <option *ngFor="let option of field.options" [value]="option.id">
                                 {{ option.label }}
                             </option>
                         </select>
+                        <small *ngIf="field.help" [id]="field.fieldName+'HelpBlock'" class="form-text text-muted">
+                            {{  field.help  }}
+                        </small>
                     </div>
                     <div class="mb-3" *ngSwitchCase="'info'">
                         <label class="form-label">{{ field.fieldLabel }}</label><br />
                         <small class="form-text">{{ field.text }}</small>
+                    </div>
+                    <div class="mb-3 form-check" *ngSwitchCase="'bool'">
+                        <label [for]="field.fieldName" class="form-check-label">{{field.fieldLabel}}</label>
+                        <input class="form-check-input" type="checkbox" [id]="field.fieldName" [(ngModel)]="currentSource.data[field.fieldName]" [attr.aria-describedby]="field.fieldName+'HelpBlock'" />
+                      <small *ngIf="field.help" [id]="field.fieldName+'HelpBlock'" class="form-text text-muted" style="display: block;">
+                        {{  field.help  }}
+                      </small>
                     </div>
                 </ng-container>
             </ng-container>
