@@ -2,6 +2,7 @@ export interface SourceTypeDataFields {
     sourceTypeId: string;
     fields: {
         optional?: boolean;
+        help?: string;
         fieldLabel: string;
         fieldName: string;
         fieldType: "text" | "port" | "number" | "dropdown" | "info" | "multiselect";
