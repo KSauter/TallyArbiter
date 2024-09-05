@@ -28,25 +28,25 @@ jobs:
         github_token: ${{ secrets.github_token }}
         release: ${{ startsWith(github.ref, 'refs/tags/v') }}
         skip_build: true
-        args: "--publish always"
+##        args: "--publish always"
 ##    - name: Get current version
 ##      uses: Saionaro/extract-package-version@v1.0.6
 ##      id: package-version
-##    - name: Upload Artifact
-##      uses: actions/upload-artifact@v2
-##      if: matrix.os == 'ubuntu-latest'
-##      with:
-##        name: 'TallyArbiter-${{ steps.package-version.outputs.version }}-Linux'
-##        path: 'release/TallyArbiter-${{ steps.package-version.outputs.version }}.AppImage'
-##    - name: Upload Artifact
-##      uses: actions/upload-artifact@v2
-##      if: matrix.os == 'macos-latest'
-##      with:
-##        name: 'TallyArbiter-${{ steps.package-version.outputs.version }}-MacOS'
-##        path: 'release/TallyArbiter-${{ steps.package-version.outputs.version }}.dmg'
-##    - name: Upload Artifact
-##      uses: actions/upload-artifact@v2
-##      if: matrix.os == 'windows-latest'
-##      with:
-##        name: 'TallyArbiter-${{ steps.package-version.outputs.version }}-Windows'
-##        path: 'release/TallyArbiter Setup ${{ steps.package-version.outputs.version }}.exe'
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      if: matrix.os == 'ubuntu-latest'
+      with:
+        name: 'TallyArbiter-${{ steps.package-version.outputs.version }}-Linux'
+        path: 'release/TallyArbiter-${{ steps.package-version.outputs.version }}.AppImage'
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      if: matrix.os == 'macos-latest'
+      with:
+        name: 'TallyArbiter-${{ steps.package-version.outputs.version }}-MacOS'
+        path: 'release/TallyArbiter-${{ steps.package-version.outputs.version }}.dmg'
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      if: matrix.os == 'windows-latest'
+      with:
+        name: 'TallyArbiter-${{ steps.package-version.outputs.version }}-Windows'
+        path: 'release/TallyArbiter Setup ${{ steps.package-version.outputs.version }}.exe'
