@@ -32,19 +32,19 @@ jobs:
       uses: Saionaro/extract-package-version@v1.0.6
       id: package-version
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       if: matrix.os == 'ubuntu-latest'
       with:
         name: 'TallyArbiter-${{ steps.package-version.outputs.version }}-Linux'
         path: 'release/TallyArbiter-${{ steps.package-version.outputs.version }}.AppImage'
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       if: matrix.os == 'macos-latest'
       with:
         name: 'TallyArbiter-${{ steps.package-version.outputs.version }}-MacOS'
         path: 'release/TallyArbiter-${{ steps.package-version.outputs.version }}.dmg'
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       if: matrix.os == 'windows-latest'
       with:
         name: 'TallyArbiter-${{ steps.package-version.outputs.version }}-Windows'
