@@ -98,7 +98,7 @@
         "prepack": "npm run build",
         "prepublishOnly": "npm run build",
         "desktop": "npm run build && electron .",
-        "build-desktop": "npm run build && electron-builder --publish always"
+        "build-desktop": "npm run build && electron-builder"
     },
     "devDependencies": {
         "@types/find-package-json": "^1.2.2",
